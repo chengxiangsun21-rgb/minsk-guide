@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minsk City Guide</title>
+<style>
+:root {
+    --navy: #1e3a5f;
+    --navy-light: #2c5282;
+    --gold: #e8a33d;
+    --ink: #22303c;
+    --muted: #66788a;
+    --line: #e3e9ef;
+    --bg: #f6f8fa;
+    --card: #ffffff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial,
+                 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.7;
+}
+a { color: var(--navy-light); }
+header.hero {
+    background: linear-gradient(135deg, #16283f 0%, #1e3a5f 55%, #2c5282 100%);
+    color: #fff;
+    padding: 72px 20px 56px;
+    text-align: center;
+}
+.hero .kicker { letter-spacing: .35em; font-size: 13px; color: var(--gold); }
+.hero h1 { font-size: 44px; margin: 12px 0 8px; letter-spacing: .04em; }
+.hero .tagline { font-size: 18px; opacity: .92; }
+.hero .intro {
+    max-width: 720px; margin: 20px auto 0;
+    font-size: 15px; opacity: .85; text-align: left;
+}
+nav {
+    position: sticky; top: 0; z-index: 10;
+    background: #fff; border-bottom: 1px solid var(--line);
+    display: flex; justify-content: center; gap: 4px; flex-wrap: wrap;
+    padding: 10px;
+}
+nav a {
+    text-decoration: none; color: var(--ink); font-size: 14px;
+    padding: 6px 14px; border-radius: 999px;
+}
+nav a:hover { background: #eef3f8; }
+main { max-width: 960px; margin: 0 auto; padding: 8px 20px 64px; }
+section { padding-top: 44px; }
+h2 { font-size: 24px; margin-bottom: 6px; }
+.lead { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+.facts {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+}
+.fact {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px; text-align: center;
+}
+.fact b { display: block; font-size: 18px; color: var(--navy); }
+.fact span { font-size: 13px; color: var(--muted); }
+.cards {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+}
+.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px; border-top: 4px solid var(--gold);
+    display: flex; flex-direction: column; gap: 8px;
+}
+.card h3 { font-size: 18px; }
+.card .local { font-size: 12px; color: var(--muted); font-style: italic; }
+.card .tag {
+    display: inline-block; font-size: 12px; color: var(--navy-light);
+    background: #eaf1f8; border-radius: 999px; padding: 2px 10px; width: fit-content;
+}
+.card p { font-size: 14px; color: #3d4e5e; flex: 1; }
+.card .metro { font-size: 13px; color: var(--muted); }
+.star {
+    align-self: flex-start; cursor: pointer; border: 1px solid var(--line);
+    background: #fff; border-radius: 999px; padding: 4px 12px; font-size: 13px;
+}
+.star.on { background: #fdf3e0; border-color: var(--gold); }
+.food-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.food {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 18px;
+}
+.food b { color: var(--navy); }
+.food p { font-size: 14px; color: #3d4e5e; margin-top: 4px; }
+.days { display: flex; flex-direction: column; gap: 12px; }
+.day {
+    display: flex; gap: 16px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px;
+}
+.day b { white-space: nowrap; color: var(--navy); }
+.day span { font-size: 14px; color: #3d4e5e; }
+.tips { background: #fff8ec; border: 1px solid #f3e2b8; border-radius: 14px; padding: 20px 24px; }
+.tips li { font-size: 14px; margin: 6px 0 6px 18px; }
+footer {
+    text-align: center; color: var(--muted); font-size: 13px;
+    padding: 28px 16px 40px;
+}
+@media (max-width: 640px) {
+    .hero h1 { font-size: 32px; }
+    .facts, .cards, .food-list { grid-template-columns: 1fr; }
+    .day { flex-direction: column; gap: 4px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="kicker">MINSK · BELARUS</div>
+  <h1>Minsk City Guide</h1>
+  <div class="tagline">The capital of Belarus · A green city on the Svislach River</div>
+  <p class="intro">Minsk is the capital and largest city of Belarus, home to nearly two million people on the banks of the Svislach River. Wide Stalinist avenues, Soviet-era metro stations, post-war memorial squares and old churches tucked into the lanes of the Upper Town give the city its unusual character. Two or three days is enough to see the best of it.</p>
+</header>
+<nav>
+  <a href="#facts">At a glance</a>
+  <a href="#sights">Top sights</a>
+  <a href="#foods">What to eat</a>
+  <a href="#plan">3-day plan</a>
+  <a href="#tips">Good to know</a>
+</nav>
+<main>
+  <section id="facts">
+    <h2>At a Glance</h2>
+    <p class="lead">A few numbers to know before you arrive in Minsk.</p>
+    <div class="facts"><div class="fact"><b>Around 2 million</b><span>Population</span></div><div class="fact"><b>Belarusian Ruble (BYN)</b><span>Currency</span></div><div class="fact"><b>Russian, Belarusian</b><span>Languages</span></div><div class="fact"><b>3 lines</b><span>Metro</span></div><div class="fact"><b>May – September</b><span>Best season</span></div><div class="fact"><b>UTC+3</b><span>Time zone</span></div></div>
+  </section>
+  <section id="sights">
+    <h2>Top Sights</h2>
+    <p class="lead"><span id="fav-count"></span></p>
+    <div class="cards"><article class="card">
+      <span class="tag">City landmark</span>
+      <h3>Independence Square &amp; the Red Church</h3>
+      <div class="local">Ploshcha Niezalezhnastsi</div>
+      <p>One of the largest squares in Europe, flanked by the House of Government from the early 1930s and the main building of Belarusian State University. On its western corner stands the Church of Saints Simon and Helena, built of dark red brick in 1905–1910 — the most photographed building in Minsk.</p>
+      <div class="metro">🚇 Metro Line 1 · Ploshcha Lenina station</div>
+      <button class="star" data-key="sight-0">☆ Save</button>
+    </article><article class="card">
+      <span class="tag">Memorial</span>
+      <h3>Victory Square</h3>
+      <div class="local">Ploshcha Peramohi</div>
+      <p>Minsk&#x27;s main WWII memorial: a tall granite obelisk crowned with the Order of Victory, an eternal flame burning at its foot, and an underground hall of memory whose walls carry the names of decorated soldiers and partisans.</p>
+      <div class="metro">🚇 Metro Line 1 · Ploshcha Peramohi station</div>
+      <button class="star" data-key="sight-1">☆ Save</button>
+    </article><article class="card">
+      <span class="tag">Memorial</span>
+      <h3>Island of Tears</h3>
+      <div class="local">Ostrov Slyoz</div>
+      <p>A small artificial island in the Svislach, reached by a footbridge from Trinity Suburb. Its memorial complex honours the Belarusian soldiers who died in the Soviet–Afghan War of 1979–1989; the weeping angel statue is the island&#x27;s most moving sight.</p>
+      <div class="metro">🚇 On foot: footbridge from Trinity Suburb</div>
+      <button class="star" data-key="sight-2">☆ Save</button>
+    </article><article class="card">
+      <span class="tag">Architectural wonder</span>
+      <h3>National Library of Belarus</h3>
+      <div class="local">Natsionalnaya Biblioteka</div>
+      <p>A glass rhombicuboctahedron opened in 2006, rising more than twenty storeys high and changing colour after dark — Minsk&#x27;s most futuristic landmark. The top-floor observation deck gives a panoramic view over the whole city.</p>
+      <div class="metro">🚇 Metro Line 1 · Uschod station</div>
+      <button class="star" data-key="sight-3">☆ Save</button>
+    </article><article class="card">
+      <span class="tag">Old town walk</span>
+      <h3>Upper Town &amp; Freedom Square</h3>
+      <div class="local">Verkhni Gorod</div>
+      <p>The closest Minsk comes to an old town: the medieval market square, the city hall, and the blue-and-white Holy Spirit Cathedral, part of a 17th-century monastery. One of the few pockets of pre-war Minsk still standing — best wandered at dusk.</p>
+      <div class="metro">🚇 Metro Line 2 · Nyamiha station</div>
+      <button class="star" data-key="sight-4">☆ Save</button>
+    </article><article class="card">
+      <span class="tag">City landmark</span>
+      <h3>Minsk Gate</h3>
+      <div class="local">Minskaya Brama</div>
+      <p>Twin eleven-storey towers in Stalinist Empire style, completed in 1953 to greet every traveller arriving by train. One tower carries the largest clock in Belarus — many visitors take their first Minsk photo right here.</p>
+      <div class="metro">🚇 Metro Line 1 · Ploshcha Lenina station</div>
+      <button class="star" data-key="sight-5">☆ Save</button>
+    </article></div>
+  </section>
+  <section id="foods">
+    <h2>What to Eat</h2>
+    <p class="lead">Belarusian food is hearty and warming — don't miss these four.</p>
+    <div class="food-list"><div class="food"><b>Draniki (Potato Pancakes)</b><p>The national dish: grated potato fried until golden and crisp outside, soft inside. Always with a spoonful of sour cream.</p></div><div class="food"><b>Borscht</b><p>A deep-red beetroot soup served with sour cream and dark bread — the warmest thing you can eat on a cold day.</p></div><div class="food"><b>Kvass</b><p>A lightly sweet, slightly fizzy drink fermented from dark bread. Sold on street corners in summer for a couple of rubles a cup.</p></div><div class="food"><b>Kolduny (Belarusian Dumplings)</b><p>Hearty meat-filled dumplings served with butter and sour cream. Made for the end of a long day of walking.</p></div></div>
+  </section>
+  <section id="plan">
+    <h2>3-Day Plan</h2>
+    <p class="lead">At this pace, three days covers all the highlights — unhurried.</p>
+    <div class="days"><div class="day"><b>Day 1 · The main axis</b><span>Independence Square → the Red Church → a walk down Independence Avenue → Victory Square → sunset in Gorky Park</span></div><div class="day"><b>Day 2 · History &amp; the old town</b><span>Museum of the Great Patriotic War → Island of Tears → Trinity Suburb → the Upper Town → dinner on Freedom Square</span></div><div class="day"><b>Day 3 · Views &amp; souvenirs</b><span>National Library observation deck → a stroll around the Opera Theatre → the central market for souvenirs → draniki at a local restaurant</span></div></div>
+  </section>
+  <section id="tips">
+    <h2>Good to Know</h2>
+    <p class="lead">A quick read before you go saves a few wrong turns.</p>
+    <ul class="tips"><li>The metro has 3 lines covering the centre and is cheap; Line 1 runs under Independence Avenue, which makes it the easiest way to explore the main axis.</li><li>The currency is the Belarusian ruble (BYN). Cards are widely accepted in malls, but keep some cash for small shops and museum tickets.</li><li>Plugs are type C / F, 220V — bring an adapter if your devices use a different plug.</li><li>May to September is the best time for walking; winters are long and cold, so dress warmly.</li><li>Russian is the everyday language; younger people speak some English. A couple of Russian phrases for directions go a long way.</li></ul>
+  </section>
+</main>
+<footer>
+  明斯克 · Minsk City Guide — this page was generated by the Python script generate.py.
+  Edit the data in the script and run it again to update the page.
+</footer>
+<script>
+const stars = document.querySelectorAll('.star');
+const counter = document.getElementById('fav-count');
+const saved = JSON.parse(localStorage.getItem('minsk-favs') || '[]');
+function refresh() {
+    const on = document.querySelectorAll('.star.on').length;
+    counter.textContent = on > 0
+        ? 'Saved ' + on + ' sight' + (on === 1 ? '' : 's')
+        : 'Tap the star to save sights you want to visit';
+}
+stars.forEach(btn => {
+    const key = btn.dataset.key;
+    if (saved.includes(key)) btn.classList.add('on');
+    btn.textContent = btn.classList.contains('on') ? '★ Saved' : '☆ Save';
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('on');
+        btn.textContent = btn.classList.contains('on') ? '★ Saved' : '☆ Save';
+        const keys = [...document.querySelectorAll('.star.on')].map(b => b.dataset.key);
+        localStorage.setItem('minsk-favs', JSON.stringify(keys));
+        refresh();
+    });
+});
+refresh();
+</script>
+</body>
+</html>
