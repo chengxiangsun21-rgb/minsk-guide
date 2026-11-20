@@ -14,6 +14,8 @@
 | `keyword-report.md` | 关键词优化报告：两组关键词、选词依据、布置位置（课堂展示用） |
 | `trends-short-tail.pdf` | Google Trends 短尾组对比截图（选词证据） |
 | `trends-long-tail.pdf` | Google Trends 长尾组对比截图（选词证据） |
+| `yandex-results.pdf` | Yandex 搜索结果页截图（交叉核查证据，Wordstat 需登录未取得展示量） |
+| `5118-results.pdf` | 5118 中文关键词工具结果页截图（交叉核查证据） |
 
 ## 本地运行
 
@@ -29,7 +31,7 @@ python generate.py
 
 按老师清单的三步顺序执行：① 用 Google Trends 查热度 → ② 筛选两组关键词 →
 ③ 自然布置到网站上。完整过程和选词依据见 `keyword-report.md`，
-工具截图在 `trends-short-tail.pdf` 和 `trends-long-tail.pdf`。
+工具截图在 `trends-short-tail.pdf`、`trends-long-tail.pdf`、`yandex-results.pdf` 和 `5118-results.pdf`。
 
 - 短尾组（1–2 个词）：Minsk（Trends 平均 61）、Belarus travel（4）、Minsk travel（1）、Minsk guide（1）
 - 长尾组（3–5 个词）：best places in Minsk（4）、things to do in Minsk（3）、Minsk city guide（2）
@@ -37,6 +39,25 @@ python generate.py
 - 布置位置：标题标签 + H1 + 页脚（Minsk city guide / Minsk guide）、H2 景点标题（best places in Minsk）、
   Meta 描述 + 景点导语（things to do in Minsk）、首段正文（Minsk travel / Belarus travel）
 - 合规：每个词在可见内容中只出现 1–2 次，无堆砌、无隐藏文字
+
+## 访问计数器（2026-11-20，按老师新要求）
+
+老师要求加两个计数器，都已加上：
+
+1. **自己写的 JavaScript 计数器**：用浏览器 `localStorage` 记访问次数，
+   每次打开页面加 1，显示在页脚（"Visits from this browser: N"）。
+   代码在 `generate.py` 的 `JS_COUNTER` 里，只记当前浏览器里的次数，
+   换浏览器或清缓存会重新计数。
+2. **Yandex Metrica 计数器**（知名 API）：Yandex 官方标准代码在页面 `<head>` 里，
+   统计全站访问量（访问、来源、点击热图等），数据在 Metrica 后台看。
+
+**Metrica 已启用：** 计数器 "Minsk City Guide" 已在
+<https://metrica.yandex.com/> 创建，编号 **114398400**，
+网站地址 `chengxiangsun21-rgb.github.io`，已填进 `generate.py` 的
+`YANDEX_METRIKA_ID` 并重新生成了 `index.html`。
+上传后在 Metrica 里点 "Check tag" 可验证计数器是否被检测到；
+数据在 Metrica 后台查看。换计数器时改 `YANDEX_METRIKA_ID`，
+重新运行脚本、重新上传即可。
 
 ## 发布到 GitHub Pages（免费，不用敲命令行）
 
@@ -70,4 +91,7 @@ python generate.py
 - 响应式布局：电脑和手机打开都正常显示。
 - 景点卡片带星标收藏按钮，点一下收藏，刷新页面后还在
   （用浏览器 localStorage 记住选择）。
-- 单文件、无外部依赖：不加载任何外部图片或字体，离线也能完整显示。
+- 页脚有访问计数器：自己写的 JavaScript 计数器，显示当前浏览器的访问次数。
+- Yandex Metrica 计数器代码在页面 `<head>` 里（填入自己的计数器编号后生效）。
+- 单文件、无外部图片或字体：离线也能完整显示（Metrica 脚本加载不到时
+  只是不统计，不影响页面显示）。
