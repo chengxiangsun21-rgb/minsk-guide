@@ -121,9 +121,47 @@ footer {
 footer .counter { margin-top: 8px; font-size: 12px; }
 @media (max-width: 640px) {
     .hero h1 { font-size: 32px; }
-    .facts, .cards, .food-list { grid-template-columns: 1fr; }
+    .facts, .cards, .food-list, .kit-grid { grid-template-columns: 1fr; }
     .day { flex-direction: column; gap: 4px; }
 }
+/* ---- My Minsk Planner ---- */
+.planner { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+.planner h3 { font-size: 16px; color: var(--navy); margin: 16px 0 6px; }
+.planner h3:first-child { margin-top: 0; }
+.pick { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 14px; cursor: pointer; }
+.pick:last-child { border-bottom: none; }
+.pick input { width: 18px; height: 18px; accent-color: var(--navy); flex-shrink: 0; }
+.pick .p-name { flex: 1; }
+.pick .p-price { color: var(--muted); white-space: nowrap; }
+.plan-controls { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
+.plan-controls label { font-size: 14px; }
+.plan-controls select { font-size: 14px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.plan-total { margin-top: 16px; background: #fff8ec; border: 1px solid #f3e2b8; border-radius: 12px; padding: 14px 18px; font-size: 15px; }
+.plan-total b { color: var(--navy); font-size: 18px; }
+.plan-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.plan-clear { margin-top: 12px; cursor: pointer; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 6px 16px; font-size: 13px; }
+.plan-clear:hover { background: #eef3f8; }
+/* ---- Survival kit for Chinese visitors ---- */
+.kit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.kit-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+.kit-box h3 { font-size: 16px; color: var(--navy); margin-bottom: 10px; }
+.kit-box h3:not(:first-child) { margin-top: 18px; }
+.kit-box p { font-size: 14px; color: #3d4e5e; }
+.phrase { display: flex; align-items: baseline; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.phrase:last-child { border-bottom: none; }
+.phrase .ru { font-weight: 700; }
+.phrase .lat { color: var(--muted); font-size: 13px; }
+.phrase .zh { margin-left: auto; white-space: nowrap; }
+.copy { cursor: pointer; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 2px 10px; font-size: 12px; white-space: nowrap; }
+.copy:hover { background: #eef3f8; }
+.conv { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.conv input { width: 130px; font-size: 15px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.conv .eq { font-size: 18px; color: var(--muted); }
+.fare-row, .emg-row { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.fare-row:last-child, .emg-row:last-child { border-bottom: none; }
+.fare-row b, .emg-row b { color: var(--navy); white-space: nowrap; }
+.emg-row small { display: block; color: var(--muted); font-size: 12px; }
+.price { font-size: 13px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -138,7 +176,9 @@ footer .counter { margin-top: 8px; font-size: 12px; }
   <a href="#sights">Best places</a>
   <a href="#foods">What to eat</a>
   <a href="#plan">3-day plan</a>
+  <a href="#planner">My planner</a>
   <a href="#tips">Good to know</a>
+  <a href="#kit">For Chinese visitors</a>
 </nav>
 <main>
   <section id="facts">
@@ -155,6 +195,7 @@ footer .counter { margin-top: 8px; font-size: 12px; }
       <div class="local">Ploshcha Niezalezhnastsi</div>
       <p>One of the largest squares in Europe, flanked by the House of Government from the early 1930s and the main building of Belarusian State University. On its western corner stands the Church of Saints Simon and Helena, built of dark red brick in 1905–1910 — the most photographed building in Minsk.</p>
       <div class="metro">🚇 Metro Line 1 · Ploshcha Lenina station</div>
+      <div class="price">Free entry</div>
       <button class="star" data-key="sight-0">☆ Save</button>
     </article><article class="card">
       <span class="tag">Memorial</span>
@@ -162,6 +203,7 @@ footer .counter { margin-top: 8px; font-size: 12px; }
       <div class="local">Ploshcha Peramohi</div>
       <p>Minsk&#x27;s main WWII memorial: a tall granite obelisk crowned with the Order of Victory, an eternal flame burning at its foot, and an underground hall of memory whose walls carry the names of decorated soldiers and partisans.</p>
       <div class="metro">🚇 Metro Line 1 · Ploshcha Peramohi station</div>
+      <div class="price">Free entry</div>
       <button class="star" data-key="sight-1">☆ Save</button>
     </article><article class="card">
       <span class="tag">Memorial</span>
@@ -169,6 +211,7 @@ footer .counter { margin-top: 8px; font-size: 12px; }
       <div class="local">Ostrov Slyoz</div>
       <p>A small artificial island in the Svislach, reached by a footbridge from Trinity Suburb. Its memorial complex honours the Belarusian soldiers who died in the Soviet–Afghan War of 1979–1989; the weeping angel statue is the island&#x27;s most moving sight.</p>
       <div class="metro">🚇 On foot: footbridge from Trinity Suburb</div>
+      <div class="price">Free entry</div>
       <button class="star" data-key="sight-2">☆ Save</button>
     </article><article class="card">
       <span class="tag">Architectural wonder</span>
@@ -176,6 +219,7 @@ footer .counter { margin-top: 8px; font-size: 12px; }
       <div class="local">Natsionalnaya Biblioteka</div>
       <p>A glass rhombicuboctahedron opened in 2006, rising more than twenty storeys high and changing colour after dark — Minsk&#x27;s most futuristic landmark. The top-floor observation deck gives a panoramic view over the whole city.</p>
       <div class="metro">🚇 Metro Line 1 · Uschod station</div>
+      <div class="price">≈ 10 BYN entry</div>
       <button class="star" data-key="sight-3">☆ Save</button>
     </article><article class="card">
       <span class="tag">Old town walk</span>
@@ -183,6 +227,7 @@ footer .counter { margin-top: 8px; font-size: 12px; }
       <div class="local">Verkhni Gorod</div>
       <p>The closest Minsk comes to an old town: the medieval market square, the city hall, and the blue-and-white Holy Spirit Cathedral, part of a 17th-century monastery. One of the few pockets of pre-war Minsk still standing — best wandered at dusk.</p>
       <div class="metro">🚇 Metro Line 2 · Nyamiha station</div>
+      <div class="price">Free entry</div>
       <button class="star" data-key="sight-4">☆ Save</button>
     </article><article class="card">
       <span class="tag">City landmark</span>
@@ -190,23 +235,70 @@ footer .counter { margin-top: 8px; font-size: 12px; }
       <div class="local">Minskaya Brama</div>
       <p>Twin eleven-storey towers in Stalinist Empire style, completed in 1953 to greet every traveller arriving by train. One tower carries the largest clock in Belarus — many visitors take their first Minsk photo right here.</p>
       <div class="metro">🚇 Metro Line 1 · Ploshcha Lenina station</div>
+      <div class="price">Free entry</div>
       <button class="star" data-key="sight-5">☆ Save</button>
     </article></div>
   </section>
   <section id="foods">
     <h2>What to Eat</h2>
     <p class="lead">Belarusian food is hearty and warming — don't miss these four.</p>
-    <div class="food-list"><div class="food"><b>Draniki (Potato Pancakes)</b><p>The national dish: grated potato fried until golden and crisp outside, soft inside. Always with a spoonful of sour cream.</p></div><div class="food"><b>Borscht</b><p>A deep-red beetroot soup served with sour cream and dark bread — the warmest thing you can eat on a cold day.</p></div><div class="food"><b>Kvass</b><p>A lightly sweet, slightly fizzy drink fermented from dark bread. Sold on street corners in summer for a couple of rubles a cup.</p></div><div class="food"><b>Kolduny (Belarusian Dumplings)</b><p>Hearty meat-filled dumplings served with butter and sour cream. Made for the end of a long day of walking.</p></div></div>
+    <div class="food-list"><div class="food"><b>Draniki (Potato Pancakes)</b> <span class="price">≈ 12 BYN</span><p>The national dish: grated potato fried until golden and crisp outside, soft inside. Always with a spoonful of sour cream.</p></div><div class="food"><b>Borscht</b> <span class="price">≈ 9 BYN</span><p>A deep-red beetroot soup served with sour cream and dark bread — the warmest thing you can eat on a cold day.</p></div><div class="food"><b>Kvass</b> <span class="price">≈ 3 BYN</span><p>A lightly sweet, slightly fizzy drink fermented from dark bread. Sold on street corners in summer for a couple of rubles a cup.</p></div><div class="food"><b>Kolduny (Belarusian Dumplings)</b> <span class="price">≈ 14 BYN</span><p>Hearty meat-filled dumplings served with butter and sour cream. Made for the end of a long day of walking.</p></div></div>
   </section>
   <section id="plan">
     <h2>3-Day Plan</h2>
     <p class="lead">At this pace, three days covers all the highlights — unhurried.</p>
     <div class="days"><div class="day"><b>Day 1 · The main axis</b><span>Independence Square → the Red Church → a walk down Independence Avenue → Victory Square → sunset in Gorky Park</span></div><div class="day"><b>Day 2 · History &amp; the old town</b><span>Museum of the Great Patriotic War → Island of Tears → Trinity Suburb → the Upper Town → dinner on Freedom Square</span></div><div class="day"><b>Day 3 · Views &amp; souvenirs</b><span>National Library observation deck → a stroll around the Opera Theatre → the central market for souvenirs → draniki at a local restaurant</span></div></div>
   </section>
+  <section id="planner">
+    <h2>My Minsk Planner</h2>
+    <p class="lead">Other guides hand you a fixed itinerary. Build your own here — tick what you want to see and eat, and see what the trip costs. Your choices are saved in this browser.</p>
+    <div class="planner">
+      <h3>1 · Pick your sights</h3>
+      <label class="pick"><input type="checkbox" data-kind="sight" data-price="0" value="sight-0"><span class="p-name">Independence Square &amp; the Red Church</span><span class="p-price">Free</span></label><label class="pick"><input type="checkbox" data-kind="sight" data-price="0" value="sight-1"><span class="p-name">Victory Square</span><span class="p-price">Free</span></label><label class="pick"><input type="checkbox" data-kind="sight" data-price="0" value="sight-2"><span class="p-name">Island of Tears</span><span class="p-price">Free</span></label><label class="pick"><input type="checkbox" data-kind="sight" data-price="10" value="sight-3"><span class="p-name">National Library of Belarus</span><span class="p-price">≈ 10 BYN</span></label><label class="pick"><input type="checkbox" data-kind="sight" data-price="0" value="sight-4"><span class="p-name">Upper Town &amp; Freedom Square</span><span class="p-price">Free</span></label><label class="pick"><input type="checkbox" data-kind="sight" data-price="0" value="sight-5"><span class="p-name">Minsk Gate</span><span class="p-price">Free</span></label>
+      <h3>2 · Pick dishes to try</h3>
+      <label class="pick"><input type="checkbox" data-kind="food" data-price="12" value="food-0"><span class="p-name">Draniki (Potato Pancakes)</span><span class="p-price">≈ 12 BYN</span></label><label class="pick"><input type="checkbox" data-kind="food" data-price="9" value="food-1"><span class="p-name">Borscht</span><span class="p-price">≈ 9 BYN</span></label><label class="pick"><input type="checkbox" data-kind="food" data-price="3" value="food-2"><span class="p-name">Kvass</span><span class="p-price">≈ 3 BYN</span></label><label class="pick"><input type="checkbox" data-kind="food" data-price="14" value="food-3"><span class="p-name">Kolduny (Belarusian Dumplings)</span><span class="p-price">≈ 14 BYN</span></label>
+      <h3>3 · How long are you staying?</h3>
+      <div class="plan-controls">
+        <label>Days: <select id="plan-days"><option value="1">1 day</option><option value="2">2 days</option><option value="3" selected>3 days</option></select></label>
+        <label>Metro rides per day: <select id="plan-rides"><option value="0">0</option><option value="2">2</option><option value="4" selected>4</option><option value="6">6</option><option value="8">8</option></select></label>
+      </div>
+      <div class="plan-total" id="plan-total"></div>
+      <p class="plan-note">Prices are approximate (Nov 2026) — sights are mostly free, food is one serving each. Transport is charged at the metro fare of 1.25 BYN a ride (since 25 Nov 2026). CNY uses ≈ 2.23 CNY per BYN. Staying overnight? A hostel bed is ≈ 60 BYN/night, a mid-range hotel ≈ 150 BYN/night — add it to your total.</p>
+      <button class="plan-clear" id="plan-clear" type="button">Clear my plan</button>
+    </div>
+  </section>
   <section id="tips">
     <h2>Good to Know</h2>
     <p class="lead">A quick read before you go saves a few wrong turns.</p>
     <ul class="tips"><li>The metro has 3 lines covering the centre and is cheap; Line 1 runs under Independence Avenue, which makes it the easiest way to explore the main axis.</li><li>The currency is the Belarusian ruble (BYN). Cards are widely accepted in malls, but keep some cash for small shops and museum tickets.</li><li>Plugs are type C / F, 220V — bring an adapter if your devices use a different plug.</li><li>May to September is the best time for walking; winters are long and cold, so dress warmly.</li><li>Russian is the everyday language; younger people speak some English. A couple of Russian phrases for directions go a long way.</li></ul>
+  </section>
+  <section id="kit">
+    <h2>Survival Kit for Chinese Visitors</h2>
+    <p class="lead">Most Minsk guides are written for English speakers. This one is for visitors from China — phrases, money, fares and emergency numbers in one place.</p>
+    <div class="kit-grid">
+      <div class="kit-box">
+        <h3>🗣️ Russian phrases — tap Copy</h3>
+        <div class="phrase"><span class="ru">Здравствуйте</span><span class="lat">Zdravstvuyte</span><span class="zh">你好（正式）</span><button class="copy" type="button" data-copy="Здравствуйте">Copy</button></div><div class="phrase"><span class="ru">Спасибо</span><span class="lat">Spasibo</span><span class="zh">谢谢</span><button class="copy" type="button" data-copy="Спасибо">Copy</button></div><div class="phrase"><span class="ru">Пожалуйста</span><span class="lat">Pozhalusta</span><span class="zh">请 / 不客气</span><button class="copy" type="button" data-copy="Пожалуйста">Copy</button></div><div class="phrase"><span class="ru">Сколько это стоит?</span><span class="lat">Skol&#x27;ko eto stoit?</span><span class="zh">这个多少钱？</span><button class="copy" type="button" data-copy="Сколько это стоит?">Copy</button></div><div class="phrase"><span class="ru">Где находится…?</span><span class="lat">Gde nakhoditsya…?</span><span class="zh">……在哪里？</span><button class="copy" type="button" data-copy="Где находится…?">Copy</button></div><div class="phrase"><span class="ru">Счёт, пожалуйста</span><span class="lat">Schyot, pozhalusta</span><span class="zh">请买单</span><button class="copy" type="button" data-copy="Счёт, пожалуйста">Copy</button></div><div class="phrase"><span class="ru">Я не понимаю</span><span class="lat">Ya ne ponimayu</span><span class="zh">我听不懂</span><button class="copy" type="button" data-copy="Я не понимаю">Copy</button></div><div class="phrase"><span class="ru">Вы говорите по-английски?</span><span class="lat">Vy govorite po-angliyski?</span><span class="zh">你会说英语吗？</span><button class="copy" type="button" data-copy="Вы говорите по-английски?">Copy</button></div><div class="phrase"><span class="ru">Помогите!</span><span class="lat">Pomogite!</span><span class="zh">救命！/ 帮帮我！</span><button class="copy" type="button" data-copy="Помогите!">Copy</button></div><div class="phrase"><span class="ru">До свидания</span><span class="lat">Do svidaniya</span><span class="zh">再见</span><button class="copy" type="button" data-copy="До свидания">Copy</button></div>
+        <p class="plan-note">Read the middle column out loud — it is how the Russian sounds in Latin letters.</p>
+      </div>
+      <div class="kit-box">
+        <h3>💱 BYN ↔ CNY converter</h3>
+        <div class="conv"><input id="conv-byn" type="number" min="0" step="0.01" placeholder="BYN"><span class="eq">⇄</span><input id="conv-cny" type="number" min="0" step="0.01" placeholder="CNY"></div>
+        <p class="plan-note">Rate ≈ 2.23 CNY per BYN (25 Nov 2026) — indicative only; bank and card rates differ.</p>
+        <h3>🚇 Transport fares</h3>
+        <div class="fare-row"><span>Metro — single ride</span><b>1.25 BYN</b></div><div class="fare-row"><span>Bus / tram / trolleybus — single ride</span><b>1.20 BYN</b></div>
+        <p class="plan-note">Fares rose on 25 Nov 2026 — check locally, they change often. Buy metro tokens at station counters or tap a bank card at the turnstile.</p>
+      </div>
+      <div class="kit-box">
+        <h3>🆘 Emergency numbers</h3>
+        <div class="emg-row"><span>Police<small></small></span><b>102</b></div><div class="emg-row"><span>Ambulance<small></small></span><b>103</b></div><div class="emg-row"><span>Fire<small></small></span><b>101</b></div><div class="emg-row"><span>Chinese Embassy — consular protection (24h)<small>Call first in an emergency</small></span><b>+375-29-6286868</b></div><div class="emg-row"><span>Chinese Embassy — consular inquiries (Chinese)<small>Mon–Fri 14:00–18:00 Minsk time</small></span><b>+375-17-3117555</b></div><div class="emg-row"><span>Chinese Embassy address<small>Consular office: Mon / Wed / Fri 09:00–11:30</small></span><b>67A Pobediteley Avenue, Minsk</b></div>
+        <p class="plan-note">102 / 103 / 101 work from any phone in Belarus, no SIM balance needed.</p>
+      </div>
+      <div class="kit-box">
+        <h3>🇨🇳 Good to know for Chinese visitors</h3>
+        <p>WeChat Pay and Alipay are almost never accepted in Minsk — bring a Visa/Mastercard or cash in BYN. Russian is the everyday language; younger people speak some English. Plugs are type C / F, 220V. The Chinese Embassy's consular office is open Mon / Wed / Fri 09:00–11:30 at 67A Pobediteley Avenue.</p>
+      </div>
+    </div>
   </section>
 </main>
 <footer>
@@ -247,6 +339,99 @@ refresh();
     if (el) {
         el.textContent = visits;
     }
+})();
+</script>
+<script>
+(function () {
+    var RATE = 2.23, METRO = 1.25, KEY = 'minsk-planner';
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+    var boxes = document.querySelectorAll('.pick input[type="checkbox"]');
+    var daysSel = document.getElementById('plan-days');
+    var ridesSel = document.getElementById('plan-rides');
+    var out = document.getElementById('plan-total');
+    var clearBtn = document.getElementById('plan-clear');
+    if (!out || !daysSel || !ridesSel) return;
+    boxes.forEach(function (b) {
+        if (saved.items && saved.items.indexOf(b.value) !== -1) b.checked = true;
+    });
+    if (saved.days) daysSel.value = saved.days;
+    if (saved.rides) ridesSel.value = saved.rides;
+    function calc() {
+        var sights = 0, dishes = 0, sightCost = 0, foodCost = 0;
+        boxes.forEach(function (b) {
+            if (!b.checked) return;
+            var p = parseFloat(b.getAttribute('data-price') || '0');
+            if (b.getAttribute('data-kind') === 'sight') { sights++; sightCost += p; }
+            else { dishes++; foodCost += p; }
+        });
+        var days = parseInt(daysSel.value, 10);
+        var rides = parseInt(ridesSel.value, 10);
+        var transport = days * rides * METRO;
+        var total = sightCost + foodCost + transport;
+        out.innerHTML = 'Your plan: <b>' + sights + ' sight' + (sights === 1 ? '' : 's')
+            + ' · ' + dishes + ' dish' + (dishes === 1 ? '' : 'es')
+            + ' · ' + days + ' day' + (days === 1 ? '' : 's') + '</b><br>'
+            + 'Sights ' + sightCost.toFixed(2) + ' + food ' + foodCost.toFixed(2)
+            + ' + transport ' + transport.toFixed(2)
+            + ' = <b>' + total.toFixed(2) + ' BYN (≈ ' + (total * RATE).toFixed(0) + ' CNY)</b>';
+        var items = [];
+        boxes.forEach(function (b) { if (b.checked) items.push(b.value); });
+        try {
+            localStorage.setItem(KEY, JSON.stringify({ items: items, days: daysSel.value, rides: ridesSel.value }));
+        } catch (e) {}
+    }
+    boxes.forEach(function (b) { b.addEventListener('change', calc); });
+    daysSel.addEventListener('change', calc);
+    ridesSel.addEventListener('change', calc);
+    if (clearBtn) clearBtn.addEventListener('click', function () {
+        boxes.forEach(function (b) { b.checked = false; });
+        daysSel.value = '3';
+        ridesSel.value = '4';
+        calc();
+        try { localStorage.removeItem(KEY); } catch (e) {}
+    });
+    calc();
+})();
+</script>
+<script>
+(function () {
+    var RATE = 2.23;
+    var byn = document.getElementById('conv-byn');
+    var cny = document.getElementById('conv-cny');
+    if (byn && cny) {
+        byn.addEventListener('input', function () {
+            var v = parseFloat(byn.value);
+            cny.value = isNaN(v) ? '' : (v * RATE).toFixed(2);
+        });
+        cny.addEventListener('input', function () {
+            var v = parseFloat(cny.value);
+            byn.value = isNaN(v) ? '' : (v / RATE).toFixed(2);
+        });
+    }
+    document.querySelectorAll('.copy').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var text = btn.getAttribute('data-copy') || '';
+            function done() {
+                btn.textContent = 'Copied ✓';
+                setTimeout(function () { btn.textContent = 'Copy'; }, 1200);
+            }
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(ta);
+                done();
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, fallback);
+            } else {
+                fallback();
+            }
+        });
+    });
 })();
 </script>
 </body>
