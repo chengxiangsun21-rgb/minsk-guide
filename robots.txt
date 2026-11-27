@@ -1,0 +1,16 @@
+# Minsk City Guide — robots.txt
+# Allow all search engine crawlers to index the public pages.
+User-agent: *
+Allow: /
+
+# Do not crawl these:
+# /admin/ — internal admin pages
+# /private/ — private pages
+# /thank-you.html — thank-you page (no content to index)
+# /search/ — search/filter result pages (duplicates of the main pages)
+# /generate.py — Python source file, not a web page
+Disallow: /admin/
+Disallow: /private/
+Disallow: /thank-you.html
+Disallow: /search/
+Disallow: /generate.py
